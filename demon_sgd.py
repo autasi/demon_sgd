@@ -2,7 +2,7 @@ from tensorflow.python.keras.optimizer_v2.gradient_descent import SGD
 from tensorflow.python.training import training_ops
 import tensorflow as tf
 
-# SGD + momentum added decay as in
+# SGD + momentum decay added as in
 # https://arxiv.org/pdf/1910.04952.pdf
 # the extra 'T' parameter is the total number of iterations
 # i.e. at this point the momentum will decay to zero
@@ -12,7 +12,7 @@ class DemonSGD(SGD):
             learning_rate=0.01,
             momentum=0.0,
             nesterov=False,
-            name="SGD",
+            name="DemonSGD",
             **kwargs):
         super(DemonSGD, self).__init__(learning_rate, momentum, nesterov, name, **kwargs)
         self._set_hyper("T", T)
